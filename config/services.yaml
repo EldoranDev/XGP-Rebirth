@@ -1,0 +1,48 @@
+imports:
+    - { resource: parameters.yaml }
+    - { resource: game.yaml }
+
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/Core'
+            - '../src/Helpers'
+            - '../src/Libraries'
+            - '../src/GameModel'
+            - '../src/Repository/Adm'
+            - '../src/Repository/Ajax'
+            - '../src/Repository/Core'
+            - '../src/Repository/XG-Game'
+            - '../src/Repository/Home'
+            - '../src/Repository/Install'
+            - '../src/Repository/Libraries'
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Service\BuildingService:
+        arguments:
+            $buildings: !tagged_iterator { tag: 'game.buildings', index_by: 'id' }
+            $producer: !tagged_iterator { tag: 'game.buildings.producer', index_by: 'id' }
+
+    App\Service\ResourceService:
+        arguments:
+            $resources : !tagged_iterator { tag: 'game.resources', index_by: 'id' }

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="language" content="en">
+    <meta name="author" content="XG Proyect Rebirth">
+    <meta name="publisher" content="XG Proyect Rebirth">
+    <meta name="copyright" content="XG Proyect Rebirth">
+    <meta name="audience" content="all">
+    <meta name="Expires" content="never">
+    <meta name="Keywords" content="{hm_keywords}">
+    <meta name="Description" content="{hm_description}">
+    <meta name="robots" content="index,follow">
+    <meta name="Revisit" content="After 14 days">
+    <!-- TODO: load title from options -->
+    <title>{{ 'server_name'|option }}</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/css/home/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/home/forms.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/home/all.css">
+
+    <style type="text/css"> body {margin:0; padding:0;}</style></head>
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('home') }}{% endblock %}
+    {% endblock %}
+<body data-controller="turbo">
+<div id="start">
+    <div id="header" data-controller="home--login">
+        <h1>
+            <img src="{{  asset('images/logo-rebirth.webp') }}" width="200px">
+            <a href="./" title="{hm_hidden_title}">
+                {hm_hidden_title}
+            </a>
+        </h1>
+
+        <button data-home--login-target="button" id="loginBtn" href="javascript:void(0)" title="Login">
+            {{ 'home.login.title'|trans }}
+        </button>
+
+        <div id="login" data-home--login-target="form">
+            {{ render(path('app_login')) }}
+        </div>
+    </div>
+
+    <div id="content" class="clearfix">
+        <div id="subscribe">
+            {{ render(path('app_register')) }}
+        </div>
+        <div id="contentWrap">
+            <div id="menu" data-controller="home--tabs" style="background-position: 15px -33px;">
+                <ul id="tabs">
+                    <li><a
+                                href="{{ path('app_home_homecontent', { tab: 'home'}) }}"
+                                class="current"
+                                data-home--tabs-target="link"
+                                data-turbo-frame="home-content"
+                        >
+                            {{ 'home.tabs.home.title'|trans }}
+                        </a>
+                    </li>
+                    <li><a
+                                href="{{ path('app_home_homecontent', { tab: 'info'}) }}"
+                                data-home--tabs-target="link"
+                                data-turbo-frame="home-content"
+                        >
+                            {{ 'home.tabs.info.title'|trans }}
+                        </a>
+                    </li>
+                    <li><a
+                                href="{{ path('app_home_homecontent', { tab: 'media'}) }}"
+                                data-home--tabs-target="link"
+                                data-turbo-frame="home-content"
+                        >
+                            {{ 'home.tabs.media.title'|trans }}
+                        </a>
+                    </li>
+                </ul>
+                <a id="tab4" href="{forum_url}" target="_blank">{hm_forum}</a>
+                <br class="clearfloat">
+            </div>
+            <div id="tabContent">
+                {{ render(path('app_home_homecontent', {tab: 'home'})) }}
+            </div>
+            <div id="contentFooter"></div>
+        </div>
+    </div>
+    <div id="push"></div>
+</div>
+<div id="footer">
+    <div id="footerContent">
+        <p id="copyright">Powered by <a href="https://gitlab.com/EldoranDev/xg-proyect-rebirth/" target="_blank" title="XG Proyect Rebirth">XG Proyect Rebirth</a> © 2025.</p>
+    </div>
+</div>
+</body>
+</html>

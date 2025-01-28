@@ -1,0 +1,56 @@
+game:
+  resources:
+    metal:
+      name: 'resources.metal.name'
+      description: 'resources.metal.description'
+      image: 'metal.png'
+    crystal:
+      name: 'resources.crystal.name'
+      description: 'resources.crystal.description'
+      image: 'crystal.png'
+    deuterium:
+      name: 'resources.deuterium.name'
+      description: 'resources.deuterium.description'
+      image: 'deuterium.png'
+  buildings:
+    metal_mine:
+      name: 'buildings.metal_mine.name'
+      description: 'buildings.metal_mine.description'
+      image: 'buildings/metal_mine.webp'
+      category: 'resources'
+      costs:
+        factor: 1.5
+        resources:
+          metal: 60
+          crystal: 15
+      producer: true
+      energy: "-ceil(10 * level * pow(1.1, level)) * (0.01 * efficiency)"
+      production:
+        metal: "(30 * level * pow(1.1, level)) * (0.01 * efficiency)"
+    solar_plant:
+      name: 'buildings.solar_plant.name'
+      description: 'buildings.solar_plant.description'
+      image: 'buildings/solar_plant.webp'
+      category: 'resources'
+      costs:
+        factor: 1.5
+        resources:
+          metal: 75
+          crystal: 30
+      producer: true
+      energy: "floor(20 * level * pow(1.1, level)) * (0.01 * efficiency)"
+      production: []
+    research_lab:
+      name: 'buildings.research_lab.name'
+      description: 'buildings.research_lab.description'
+      image: 'missing.webp'
+      category: 'facilities'
+      costs:
+        factor: 1
+        resources:
+          metal: 200
+          crystal: 400
+          deuterium: 200
+      producer: false
+
+

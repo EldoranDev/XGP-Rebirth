@@ -1,0 +1,34 @@
+home:
+  signup:
+    title: 'Play for Free!'
+    universe: 'Universe'
+    username: 'Username'
+    password: 'Password'
+    email: 'E-Mail'
+    tos: 'ToS & AGB'
+    submit: 'Register'
+  login:
+    title: 'Login'
+    universe: 'Universe'
+    email: 'E-Mail'
+    password: 'Password'
+  tabs:
+    home:
+      title: "Home"
+    info:
+      title: "About XGP"
+    media:
+      title: "Media"
+
+game:
+  overview:
+    server_time: "Server time"
+    events: "Events"
+    position: "Position"
+    points: "Points"
+    diameter:
+      label: "Diameter"
+      message: "%diameter% km (%fields% / %fieldsMax% Fields)"
+    temperature:
+      label: "Temperature"
+      message: "approx. -%minTemp%ºC to %maxTemp%ºC"

@@ -1,0 +1,11 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+        exclude:
+          - "../src/Controller/Adm"
+          - "../src/Controller/Ajax"
+          - "../src/Controller/XG-Game"
+          - "../src/Controller/Home"
+          - "../src/Controller/Install"
+    type: attribute

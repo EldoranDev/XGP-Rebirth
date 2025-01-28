@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+    <!-- TODO: load version from settings -->
+    <meta name="generator" content="XG Proyect Rebirth 1.0" />
+    {% block meta %}
+    {% endblock %}
+
+    <title>{{ 'server_name'|option }}</title>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/default.css">
+    <link rel="stylesheet" type="text/css" href="/css/redesign.css">
+    <link rel="stylesheet" type="text/css" href="/css/formate.css">
+    <link rel="stylesheet" type="text/css" href="/upload/skins/xgproyect/formate.css">
+
+    <script type="text/javascript" src="/js/overlib-min.js"></script>
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('game') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+    <div id="header_top">
+        {% include 'game/_resources.html.twig' %}
+    </div>
+    <div class="leftmenu">
+        {% include 'game/_navigation.html.twig' %}
+    </div>
+    <center>
+        <div id="content" style="top: 91px;">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </center>
+</body>
+</html>

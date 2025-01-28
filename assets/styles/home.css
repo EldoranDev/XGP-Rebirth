@@ -1,0 +1,83 @@
+.submit-button {
+    background:url("/images/home/sprite.png") no-repeat scroll 0 -30px transparent;
+    color:#FFFFFF;
+    cursor:pointer;
+    display:block;
+    font-size:20px;
+    height:54px;
+    line-height:54px;
+    margin:0 auto 10px;
+    padding:0 30px 0 15px;
+    text-align:center;
+    text-shadow:-1px -1px #000000;
+    width:155px;
+}
+.submit-button:hover {
+    background-position:0 -84px;
+    text-shadow:-1px -1px #5F5F5F;
+}
+
+.submit-button {
+    border: 0px;
+    width:198px;
+}
+
+button.submit-button {
+    width:205px;
+}
+
+#subscribe {
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    display:inline;
+    float:left;
+    margin: 48px 1px 8px 8px;
+    width:220px;
+    position: relative;
+}
+
+#subscribe form {
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    background:none repeat scroll 0 0 #22303F;
+    border:1px solid #2D343C;
+    width:220px;
+}
+
+#subscribe form h2 {
+    font-size:14px;
+    padding:0 0 0 10px;
+    text-transform:uppercase;
+    text-shadow:1px 2px #000000;
+    border-bottom:1px dotted #000;
+}
+
+#subscribe form label {
+    margin:2px auto;
+    width:188px;
+}
+
+#subscribe form .input-wrap {
+    background:#22303f url('/images/home/subscribe-form-bg.png') repeat-x 0 bottom;
+    height:50px;
+}
+
+#subscribe form .input-wrap:first-child {
+    height: 53px;
+}
+
+#subscribe form .submit-wrap {
+    background:url(/images/home/subscribe-bg.jpg) repeat-x;
+    position: relative;
+}
+
+#subscribe form .submit-wrap label {
+    background:none;
+    color:#848484;
+    font-size:11px;
+    height:40px;
+    padding:0;
+    margin:0 auto;
+    width: 220px;
+}
+

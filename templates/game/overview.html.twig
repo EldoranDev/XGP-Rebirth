@@ -1,0 +1,64 @@
+{% extends 'game.html.twig' %}
+
+{% block content %}
+    <table width="519">
+        <tbody><tr>
+            <td class="c" colspan="4">
+                <a href="game.php?page=renameplanet" title="{Planet_menu}">Planet "{{ game.planet.name }}"</a> ({{ app.user.username }})
+            </td>
+        </tr>
+
+        <tr>
+            <th>{{ 'game.overview.server_time'|trans }}</th>
+            <th colspan="3">{{ 'now'|date('d.m.Y H:i:s') }}</th>
+        </tr>
+        <tr>
+            <td colspan="4" class="c">{{ 'game.overview.events'|trans }}</td>
+        </tr>
+
+        <tr>
+            <th><br></th>
+            <th colspan="2">
+                <img src="{{ asset('images/planets/' ~ planet.image) }}"
+                     height="200"
+                     width="200">
+                <br>
+                <!-- TODO: Display Build Queue -->
+                {{ '{{' }} BUILD QUEUE NEEDS TO BE PUT HERE {{  '}}' }}
+            </th>
+            <th class="s">
+                <table class="s" align="top" border="0">
+                    <tbody>
+                        <tr></tr>
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </th>
+        </tr>
+        <tr>
+            <th>{{ 'game.overview.diameter.label'|trans }}</th>
+            <th colspan="3">
+                {{ 'game.overview.diameter.message'|trans({
+                    '%diameter%': planet.size.diameter|number_format(0, ',', '.'),
+                    '%fields%': planet.currentFields,
+                    '%fieldsMax%': planet.size.fieldsMax
+                }) }}
+            </th>
+        </tr>
+        <tr>
+            <th>{{ 'game.overview.temperature.label'|trans }}</th>
+            <th colspan="3">{{ 'game.overview.temperature.message'|trans({
+                    '%minTemp%': planet.temperature.min,
+                    '%maxTemp%': planet.temperature.max,
+                }) }}</th>
+        </tr>
+        <tr>
+            <th>{{ 'game.overview.position'|trans }}</th>
+            <th colspan="3"><a href="game.php?page=galaxy&amp;mode=0&amp;galaxy=1&amp;system=1">{{ planet.coordinates }}</a></th>
+        </tr>
+        <tr>
+            <th>{{ 'game.overview.points'|trans }}</th>
+            <th colspan="3">{{ statistics.totalPoints }} (Rank <a href="game.php?page=statistics&amp;range=1" title="1">{{ statistics.totalRank }}</a> of {{ game.usersCount }})
+            </th></tr>
+        </tbody></table>
+{% endblock %}

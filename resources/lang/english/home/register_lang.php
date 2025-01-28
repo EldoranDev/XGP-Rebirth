@@ -6,7 +6,7 @@ $lang = [
     're_mail_text_part2' => '<strong>Data to access the game</strong>',
     're_mail_text_part3' => 'Your username',
     're_mail_text_part4' => 'Your password',
-    're_mail_text_part5' => 'Game link',
+    're_mail_text_part5' => 'XG-Game link',
     're_mail_text_part6' => 'Enjoy the game!',
     're_mail_text_part7' => 'Regards,<br/>The %s Team.-',
     're_mail_register_at' => 'Joined to XG Proyect',
@@ -30,7 +30,7 @@ $lang = [
     Support: <a href="game.php?page=support">game support</a><br/>
     <br/><br/>
 
-    The latest announcements and changes in the game can only be found in the forum. There, on the bar at the top of the screen, you will find the `Chat` button. This takes you directly to the IRC chat. The channel selection list contains the #ogame-support channel, where you can ask questions directly. The Game Operator in charge of your Universe can also be found there.
+    The latest announcements and changes in the game can only be found in the forum. There, on the bar at the top of the screen, you will find the `Chat` button. This takes you directly to the IRC chat. The channel selection list contains the #ogame-support channel, where you can ask questions directly. The XG-Game Operator in charge of your Universe can also be found there.
     <br/><br/>
     Now you are fully armed for the future - good luck!
     <br/><br/>

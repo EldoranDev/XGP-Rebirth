@@ -10,7 +10,7 @@ $lang = [
     'ma_mail_title' => 'New password',
     'ma_mail_text_part1' => '<strong>New data to access the game:</strong>',
     'ma_mail_text_part2' => 'Your password',
-    'ma_mail_text_part3' => 'Game link',
+    'ma_mail_text_part3' => 'XG-Game link',
     'ma_mail_text_part4' => 'Enjoy the game!',
     'ma_mail_text_part5' => 'Regards,<br/>The %s Team.-',
 ];

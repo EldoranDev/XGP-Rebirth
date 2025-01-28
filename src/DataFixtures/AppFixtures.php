@@ -1,0 +1,26 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\Option;
+use App\Entity\OptionType;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+
+class AppFixtures extends Fixture
+{
+    public function load(ObjectManager $manager): void
+    {
+        // $product = new Product();
+        // $manager->persist($product);
+
+        $manager->persist(new Option('server_name', 'XG Rebirth', OptionType::STRING));
+		$manager->persist(new Option('resource_multiplier', 1.0, OptionType::FLOAT));
+		$manager->persist(new Option('universe_speed', 1.0, OptionType::FLOAT));
+        $manager->persist(new Option('metal_basic_income', 90, OptionType::INT));
+        $manager->persist(new Option('crystal_basic_income', 45, OptionType::INT));
+        $manager->persist(new Option('deuterium_basic_income', 0, OptionType::INT));
+
+        $manager->flush();
+    }
+}

@@ -1,0 +1,69 @@
+.idea/
+.php-cs-fixer.cache
+
+#
+# application
+#
+config/config.php
+
+#
+# public
+#
+public/compiles/*
+
+#
+# storage
+#
+storage/backups/*.sql
+storage/cache/*.html
+storage/logs/*.txt
+**/errors/*.html
+
+#
+# tests
+#
+tests/.phpunit.result.cache
+tests/build/
+tests/_reports/
+
+#
+# docs
+#
+.phpdoc/*
+/docs/*
+
+#
+# docker
+#
+data/xgp.sql
+
+#
+# IDE
+#
+*.code-workspace
+nbproject/
+
+#
+# composer
+#
+/vendor
+composer.lock
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

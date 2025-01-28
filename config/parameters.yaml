@@ -1,0 +1,23 @@
+parameters:
+  game.defaults.max_galaxy_in_world: 9
+  game.defaults.max_system_in_galaxy: 499
+  game.defaults.max_planet_in_system: 15
+  game.defaults.separation.galaxy: 1
+  game.defaults.separation.system: 1
+  game.defaults.separation.planet: 2
+  game.defaults.fields.moonbase_level: 3
+  game.defaults.fields.terraformer_level: 5
+  game.defaults.max_building_queue_size: 5
+
+  game.max_galaxy_in_world: '%env(default:game.defaults.max_galaxy_in_world:int:APP_MAX_GALAXY_IN_WORLD)%'
+  game.max_system_in_galaxy: '%env(default:game.defaults.max_system_in_galaxy:int:APP_MAX_SYSTEM_IN_GALAXY)%'
+  game.max_planet_in_system: '%env(default:game.defaults.max_planet_in_system:int:APP_MAX_PLANET_IN_SYSTEM)%'
+
+  game.separation.galaxy: '%env(default:game.defaults.separation.galaxy:int:SEPARATION_GALAXY_FACTOR)%'
+  game.separation.system: '%env(default:game.defaults.separation.system:int:SEPARATION_SYSTEM_FACTOR)%'
+  game.separation.planet: '%env(default:game.defaults.separation.planet:int:SEPARATION_PLANET_FACTOR)%'
+
+  game.fields.moonbase_level: '%env(default:game.defaults.fields.moonbase_level:int:FIELDS_BY_MOONBASIS_LEVEL)%'
+  game.fields.terraformer_level: '%env(default:game.defaults.fields.terraformer_level:int:FIELDS_BY_TERRAFORMER_LEVEL)%'
+
+  game.max_building_queue_size: '%env(defaults:game.defaults.max_building_queue_size:int:MAX_BUILDING_QUEUE_SIZE)%'

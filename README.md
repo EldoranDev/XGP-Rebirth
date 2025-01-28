@@ -1,20 +1,22 @@
 
 
 
-<p align="center"
-    <a href="https://www.xgproyect.org/" target="_blank">
-        <img align="center" img src="https://xgproyect.org/wp-content/uploads/2019/10/xgp-new-logo-black.png" width="250px" title="XG Proyect" alt="xgp-logo">
+<p align="center">
+    <a href="https://github.com/EldoranDev/XGP-Rebirth" target="_blank">
+        <img align="center" src="" width="250px" title="XG Proyect" alt="xgp-logo">
     </a>
     <br>
-    <strong>X</strong>treme <strong>G</strong>amez <strong>Proyect</strong>o
+    <strong>XGP</strong> Rebirth
     <br>
-    <strong>Open-source OGame Clon</strong>
+    <strong>Open-source OGame Clone</strong>
 </p> 
 
 About
 ====
 
 XG Proyect (XGP) is an OGame clone open-source web application framework designed for creating game clones, particularly those inspired by the popular game OGame, set in a vast and captivating space-themed universe. Our goal is to offer a package that is as similar as possible to the original, but keeping their original design.
+
+This is the attempt to migrate the original XG Proyect to a more modern and updated version of PHP as well as moving it to symfony instead of basing it on a custom framework.
 
 ## Requirements
 
@@ -105,3 +107,9 @@ The following are tools or frameworks that we use to do our coding experience be
 
 ## License
 The XG Proyect is open-sourced software licensed under the GPL-3.0 License.
+
+## Install Options
+Options that need to get added to the installer:
+
+- initial_fields
+- server_name

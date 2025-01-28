@@ -19,11 +19,11 @@ function changeAction(type,formular)
     }
     else if(type == "getpw")
     {
-        document.forms[formular].action = "//"+uniUrl+"/index.php?page=mail";
+        document.forms[formular].action = "//"+uniUrl+"/old-index.php?page=mail";
     }
     else if(type == "register")
     {
-        document.forms[formular].action = "//"+uniUrl+"/index.php?page=register";
+        document.forms[formular].action = "//"+uniUrl+"/old-index.php?page=register";
 
     }
 }

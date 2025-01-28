@@ -1,0 +1,45 @@
+{% extends 'fractal.html.twig' %}
+
+{% block content %}
+<form id="loginForm" method="post" action="{{ path('app_login') }}">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <input type="hidden" name="kid" value="">
+    <div class="input-wrap">
+        <label for="serverLogin">
+            {{ 'home.login.universe'|trans }}
+        </label>
+
+        <div class="black-border">
+            <select class="js_uniUrl" id="serverLogin" name="uni">
+                <option value="0">Universe 1</option>
+            </select>
+        </div>
+    </div>
+    <div class="input-wrap">
+        <label for="username">{{ 'home.login.email'|trans }}</label>
+        <div class="black-border">
+            <input type="email" value="{{ last_username }}" name="_username" id="username" class="js_userName" autocomplete="email" required autofocus>
+        </div>
+    </div>
+    <div class="input-wrap">
+        <label for="password">{{ 'home.login.password'|trans }}</label>
+        <div class="black-border">
+            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+        </div>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    <input type="submit" id="loginSubmit" value="{hm_login_button}">
+    <a href="#" id="pwLost" target="_blank" title="{hm_password_forgot}">{hm_password_forgot}</a>
+
+    <p id="TermsAndConditionsAcceptWithLogin">
+        {hm_terms_accept} <a class="" href="index.php?page=terms" target="_blank" title="{hm_terms}">{hm_terms}</a>
+    </p>
+</form>
+{% endblock %}

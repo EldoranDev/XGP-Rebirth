@@ -1,0 +1,47 @@
+{% extends 'fractal.html.twig' %}
+
+{% block content %}
+<turbo-frame id="subscribe">
+    {{ form_start(registrationForm) }}
+
+    <h2>{{  'home.signup.title'|trans }}</h2>
+    {{ form_errors(registrationForm) }}
+
+    <div class="input-wrap first">
+        {{ form_label(registrationForm.universe) }}
+        <div class="black-border">
+            {{ form_widget(registrationForm.universe) }}
+        </div>
+
+    </div>
+
+    <div class="input-wrap">
+        {{ form_label(registrationForm.username) }}
+        <div class="black-border">
+            {{ form_widget(registrationForm.username) }}
+        </div>
+    </div>
+    <div class="input-wrap">
+        {{ form_label(registrationForm.plainPassword) }}
+        <div class="black-border">
+            {{ form_widget(registrationForm.plainPassword) }}
+        </div>
+    </div>
+
+    <div class="input-wrap">
+        {{ form_label(registrationForm.email) }}
+        <div class="black-border">
+            {{ form_widget(registrationForm.email) }}
+        </div>
+    </div>
+    <div id="submit-wrap">
+        {{ form_widget(registrationForm.agreeTerms) }}
+        {{ form_label(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="submit-button">
+            {{ 'home.signup.submit'|trans }}
+        </button>
+    </div>
+    {{ form_end(registrationForm) }}
+</turbo-frame>
+{% endblock %}

@@ -142,7 +142,7 @@ h2 {
 
 h4 {color:#619FC8;}
 
-a#loginBtn {
+button#loginBtn {
     background:url(../../images/home/sprite.png) no-repeat scroll 0 0;
     color:#FFF;
     display:block;
@@ -178,11 +178,11 @@ span#eventText {
     width: 240px;
 }
 
-a#loginBtnEvent:hover {background-position: 0px -60px;}
+button#loginBtnEvent:hover {background-position: 0px -60px;}
 /*IE6 double margin*/
 *html a#loginBtn {display:inline;}
 
-a#loginBtn:hover {background-position: -102px 0;}
+button#loginBtn:hover {background-position: -102px 0;}
 
 #login {
     background:url(../../images/home/login-mask.gif) no-repeat;
@@ -332,10 +332,7 @@ a#loginBtn:hover {background-position: -102px 0;}
     border-bottom:1px dotted #000;
 }
 
-#subscribeForm .input-wrap {
-    background:#22303f url(../../images/home/subscribe-form-bg.png) repeat-x 0 bottom;
-    height:50px;
-}
+
 #subscribeForm .first {
     height: 53px;
 }
@@ -348,19 +345,7 @@ a#loginBtn:hover {background-position: -102px 0;}
 #subscribeForm label span {
     font-size:11px;
 }
-#subscribeForm #submitWrap {
-    background:url(../../images/home/subscribe-bg.jpg) repeat-x;
-    position: relative;
-}
-#subscribeForm #submitWrap label {
-    background:none;
-    color:#848484;
-    font-size:11px;
-    height:40px;
-    padding:0;
-    margin:0 auto;
-    width: 220px;
-}
+
 #stayLoggedIn,
 #agb {
     background: #ffffff;
@@ -377,22 +362,7 @@ a#loginBtn:hover {background-position: -102px 0;}
 
 #stayLoggedIn {background:0; margin:0 5px 0 0;}
 
-#regSubmit {
-    background:url("../../images/home/sprite.png") no-repeat scroll 0 -30px transparent;
-    color:#FFFFFF;
-    cursor:pointer;
-    display:block;
-    font-size:20px;
-    height:54px;
-    line-height:54px;
-    margin:0 auto 10px;
-    padding:0 30px 0 15px;
-    text-align:center;
-    text-shadow:-1px -1px #000000;
-    width:155px;
-}
-#regSubmit:hover {background-position:0 -84px; text-shadow:-1px -1px #5F5F5F;}
-input#regSubmit {width:205px;}
+
 /*
 ############################
 ####  CONTENT MENU/TABS

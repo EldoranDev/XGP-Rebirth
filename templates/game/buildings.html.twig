@@ -1,0 +1,46 @@
+{% extends 'game.html.twig' %}
+
+{% block content %}
+    {% macro requirements(requirements, planet) %}
+        Requires:
+            {% for res, req in requirements %}
+                {% set diff = planet.resource(res) - req %}
+
+                {{ res }}:
+                {% if diff >= 0 %}
+                    <b style="color:lime;">{{ req|number_format(0, ',', '.') }}</b>
+                {% else %}
+                    <b style="color:red;">
+                        <t title="{{ diff }}">
+                            <span class="noresources">
+                                {{ req|number_format(0, ',', '.') }}
+                            </span>
+                        </t>
+                    </b>
+                {% endif %}
+            {% endfor %}
+    {% endmacro %}
+
+    <table width="530">
+        <tbody>
+        {% for building in buildings %}
+            {% set buildingLevel = planet.building(building.id) %}
+
+            <tr>
+                <td class="l" width="120" height="120">
+                    <a href="{{ path('game_info_building', { id: building.id }) }}">
+                        <img border="0" src="{{ asset('images/' ~ building.image) }}" align="top" width="120" height="120">
+                    </a>
+                </td>
+                <td class="l">
+                    <a href="{{ path('game_info_building', {id: building.id}) }}">{{ building.name|trans }}</a> (Level {{ buildingLevel }})<br>
+                    {{ 'buildings.' ~ building.id ~ '.description'|trans }}<br>
+                    {{ _self.requirements(building.costs(buildingLevel + 1), planet) }}<br>
+                    <br>Construction Time: {{ building|constructionTime(planet, buildingLevel + 1) }}
+                </td>
+                <td class="k"><font color="#ff0000">Improve</font></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

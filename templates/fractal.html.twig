@@ -1,0 +1,13 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    {% if turboPageRequiresReload|default(false) %}
+        <meta name="turbo-visit-control" content="reload">
+    {% endif %}
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
