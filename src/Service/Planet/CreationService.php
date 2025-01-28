@@ -46,7 +46,7 @@ final readonly class CreationService
         $planet = new Planet(
             name: $name,
             userId: $user->getId(),
-            image: 'planet.png',
+            image: 'planet_01.webp',
             type: PlanetType::Planet,
             coordinates: $coordinates,
             size: $size,

@@ -12,7 +12,7 @@ class Coordinates
     public function __construct(
         #[ORM\Column]
         private int $galaxy,
-        #[ORM\Column]
+        #[ORM\Column(name: '`system`')]
         private int $system,
         #[ORM\Column]
         private int $position,
