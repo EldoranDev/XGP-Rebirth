@@ -1,6 +1,6 @@
 apiVersion: v2
 name: xgp-rebirth
-description: Helm chart for the XGP Rebirht project
+description: Helm chart for the XGP Rebirth project
 
 type: application
 version: 0.1.0
