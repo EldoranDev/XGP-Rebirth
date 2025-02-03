@@ -41,10 +41,9 @@ jobs:
           # list of Docker images to use as base name for tags
           images: |
             ghcr.io/EldoranDev/xgp-rebirth
-            # generate Docker tags based on the following events/attributes
-            tags: |
-              type=ref,event=branch
-              type=semver,pattern={{version}}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
 
       - name: Build and push
         uses: docker/build-push-action@v6
