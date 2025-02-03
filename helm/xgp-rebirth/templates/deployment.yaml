@@ -36,6 +36,16 @@ spec:
             httpGet:
               path: /
               port: http
+          env:
+            - name: SERVER_NAME
+              value: ':80'
+            - name: APP_ENV
+              value: prod
+            - name: DATABASE_URL
+              # TODO: replace with secure variant
+              value: "mysql://{{ .Values.mysql.auth }}:{{ .Values.mysql.auth.password }}@mysql:3306/{{  .Values.mysql.auth.database }}?serverVersion=9&charset=utf8mb4"
+            - name: APP_SECRET
+              value: {{ .Values.env.APP_SECRET }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

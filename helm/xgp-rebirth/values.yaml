@@ -15,6 +15,20 @@ service:
   type: ClusterIP
   port: 80
 
+env:
+  # TODO: Replace with secret management
+  APP_SECRET: 'b8703a35afba8071845ca72cf6313680'
+
+mysql:
+  enabled: true
+  auth:
+    database: 'xgp'
+    username: 'xgp'
+    password: 'xgp'
+  primary:
+    resourcesPreset: 'nano'
+
+
 resources: {}
 
 nodeSelector: {}
