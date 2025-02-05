@@ -41,11 +41,21 @@ spec:
               value: ':80'
             - name: APP_ENV
               value: prod
-            - name: DATABASE_URL
-              # TODO: replace with secure variant
-              value: "mysql://{{ .Values.mysql.auth }}:{{ .Values.mysql.auth.password }}@mysql:3306/{{  .Values.mysql.auth.database }}?serverVersion=9&charset=utf8mb4"
+            - name: DATABASE_USER
+              value: {{ .Values.mysql.auth.username }}
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.mysql.auth.existingSecret }}
+                  key: mysql-password
             - name: APP_SECRET
-              value: {{ .Values.env.APP_SECRET }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.app }}
+                  key: app-secret
+
+            - name: DATABASE_URL
+              value: mysql://$(DATABASE_USER):$(DATABASE_PASSWORD)@{{ .Values.mysql.host }}:3306/{{  .Values.mysql.auth.database }}?serverVersion=8'
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

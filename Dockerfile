@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile:1
 
 # Versions
-FROM dunglas/frankenphp:1-php8.4 AS frankenphp_upstream
+FROM dunglas/frankenphp:1-php8.4-alpine AS frankenphp_upstream
 
 # The different stages of this Dockerfile are meant to be built into separate images
 # https://docs.docker.com/develop/develop-images/multistage-build/#stop-at-a-specific-build-stage
@@ -11,27 +11,34 @@ FROM dunglas/frankenphp:1-php8.4 AS frankenphp_upstream
 # Base FrankenPHP image
 FROM frankenphp_upstream AS frankenphp_base
 
+ENV ICU_VERSION=74.2-r0
+
 WORKDIR /app
 
 VOLUME /app/var/
 
 # persistent / runtime deps
 # hadolint ignore=DL3008
-RUN apt-get update && apt-get install -y --no-install-recommends \
-	acl \
-	file \
-	gettext \
-	git \
-	&& rm -rf /var/lib/apt/lists/*
+RUN apk add --update --no-cache \
+      icu=${ICU_VERSION} && \
+    apk add --update --no-cache --virtual .custom-build-deps \
+        $PHPIZE_DEPS \
+        g++ \
+        libstdc++ \
+        make \
+        zlib-dev \
+        autoconf \
+        icu-dev && \
+    install-php-extensions \
+    	@composer \
+    	apcu \
+    	intl \
+    	opcache \
+    	zip \
+        pdo_mysql && \
+    apk del --no-network .custom-build-deps && \
+    rm -rf /tmp/*
 
-RUN set -eux; \
-	install-php-extensions \
-		@composer \
-		apcu \
-		intl \
-		opcache \
-		zip \
-	;
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -40,7 +47,6 @@ ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 
 ###> recipes ###
 ###> doctrine/doctrine-bundle ###
-RUN install-php-extensions pdo_mysql
 ###< doctrine/doctrine-bundle ###
 ###< recipes ###
 
@@ -59,6 +65,9 @@ FROM frankenphp_base AS frankenphp_dev
 ENV APP_ENV=dev XDEBUG_MODE=off
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+RUN apk add --update --no-cache \
+    git
 
 RUN set -eux; \
 	install-php-extensions \
