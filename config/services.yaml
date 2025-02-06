@@ -46,3 +46,15 @@ services:
     App\Service\ResourceService:
         arguments:
             $resources : !tagged_iterator { tag: 'game.resources', index_by: 'id' }
+
+    # Preload Game options that will be required on every request
+    # and make sense to be loaded in bulk
+    App\EventListener\OptionsLoaderListener:
+        arguments:
+            $preloadedOptions:
+                - server_name
+                - resource_multiplier
+                - universe_speed
+                - metal_basic_income
+                - crystal_basic_income
+                - deuterium_basic_income
