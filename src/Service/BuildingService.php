@@ -55,6 +55,11 @@ class BuildingService
 		];
 	}
 
+	public function getBuilding(string $building): ?Building
+	{
+		return $this->buildings['game.building.' . $building] ?? null;
+	}
+
     /**
 	 * Returns all buildings registered in the system
 	 * that are capable of producing resources

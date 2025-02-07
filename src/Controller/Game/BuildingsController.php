@@ -42,4 +42,18 @@ class BuildingsController extends AbstractController
 			'planet' => $user->getCurrentPlanet(),
 		]);
 	}
+
+	#[Route('/build/{buildingId}', name: 'build')]
+	public function buildAction(string $buildingId): Response
+	{
+		$building = $this->buildingService->getBuilding($buildingId);
+
+		if ($building === null) {
+			return $this->redirectToRoute('game_overview_index');
+		}
+
+		// TODO: Validate and add building to queue
+
+		return $this->redirectToRoute('game_buildings_' . $building->category);
+	}
 }

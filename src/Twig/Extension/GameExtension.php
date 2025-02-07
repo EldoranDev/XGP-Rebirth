@@ -11,6 +11,7 @@ use App\Service\OptionsService;
 use App\Service\ResourceService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 final class GameExtension extends AbstractExtension
 {
@@ -20,11 +21,11 @@ final class GameExtension extends AbstractExtension
     ) {}
 
     public function getFilters(): array
-    {
-        return [
-            new TwigFilter('constructionTime', [$this, 'getConstructionTime']),
-        ];
-    }
+	{
+		return [
+			new TwigFilter('constructionTime', [$this, 'getConstructionTime']),
+		];
+	}
 
 	public function getConstructionTime(Building $building, Planet $planet, int $level): string
 	{
@@ -35,7 +36,6 @@ final class GameExtension extends AbstractExtension
 			$planet->getBuilding('nanite_factory'),
 		);
 
-		dump($time);
 		return gmdate('H:i:s', $time);
 	}
 }

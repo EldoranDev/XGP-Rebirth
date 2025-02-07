@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Doctrine\Type\BuildingQueueType;
+use App\Dto\BuildingQueueItem;
 use App\Repository\PlanetRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,7 +38,14 @@ class Planet
     private array $buildings = [];
 
 	/**
-	 * @param array $resources
+	 * @var array<BuildingQueueItem>
+	 */
+	#[ORM\Column(type: BuildingQueueType::TYPE_NAME)]
+	private array $buildQueue = [];
+
+	/**
+	 * @param array<string, int> $resources
+	 * @param array<string, int> $resourcesPerHour
 	 */
     public function __construct(
         #[ORM\Column(length: 255)]
@@ -187,4 +196,14 @@ class Planet
     {
         return $this->lastUpdate;
     }
+
+	public function getBuildQueue(): array
+	{
+		return $this->buildQueue;
+	}
+
+	public function addBuildingToQueue(): array
+	{
+
+	}
 }
