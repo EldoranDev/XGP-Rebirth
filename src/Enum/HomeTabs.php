@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Enum;
 
-enum HomeTabsEnum: string
+enum HomeTabs: string
 {
     case Home = 'home';
     case Info = 'info';

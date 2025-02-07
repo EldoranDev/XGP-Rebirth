@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Enum\HomeTabs;
 use App\Form\RegistrationFormType;
-use App\HomeTabsEnum;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\AsController;
@@ -27,7 +27,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/home/{tab}', requirements: ['tab' => new EnumRequirement(HomeTabsEnum::class)])]
+    #[Route('/home/{tab}', requirements: ['tab' => new EnumRequirement(HomeTabs::class)])]
     public function homeContentAction(string $tab): Response
     {
         return $this->render("home/tabs/{$tab}.html.twig");

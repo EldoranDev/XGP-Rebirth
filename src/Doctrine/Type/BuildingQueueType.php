@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\Type;
 
 class BuildingQueueType extends Type
 {
-	public const string TYPE_NAME = 'queue';
+	public const string TYPE_NAME = 'building_queue';
 
 	public function getName(): string
 	{

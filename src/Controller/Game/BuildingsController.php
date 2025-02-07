@@ -52,7 +52,7 @@ class BuildingsController extends AbstractController
 			return $this->redirectToRoute('game_overview_index');
 		}
 
-		// TODO: Validate and add building to queue
+		dump($building);
 
 		return $this->redirectToRoute('game_buildings_' . $building->category);
 	}
