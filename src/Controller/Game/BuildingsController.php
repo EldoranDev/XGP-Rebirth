@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace App\Controller\Game;
 
 use App\Entity\User;
+use App\Exception\GameException;
 use App\Service\BuildingService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -52,7 +54,19 @@ class BuildingsController extends AbstractController
 			return $this->redirectToRoute('game_overview_index');
 		}
 
-		dump($building);
+		$user = $this->getUser();
+		assert($user instanceof User);
+
+		try {
+			$this->buildingService->upgradeBuilding(
+				$building,
+				$user->getCurrentPlanet(),
+			);
+		} catch (GameException $e) {
+			dump($e);
+		} catch (\Throwable $e) {
+			// Some unknown error occurred
+		}
 
 		return $this->redirectToRoute('game_buildings_' . $building->category);
 	}

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Dto;
 
+use App\Enum\BuildQueueMode;
+
 final readonly class BuildingQueueItem
 {
 	public function __construct(
@@ -10,7 +12,7 @@ final readonly class BuildingQueueItem
 		public int $level,
 		public int $time,
 		public int $endTime,
-		public string $mode,
+		public BuildQueueMode $mode,
 	) {}
 
 	public static function fromArray(array $data): self
@@ -20,7 +22,7 @@ final readonly class BuildingQueueItem
 			$data['level'],
 			$data['time'],
 			$data['endTime'],
-			$data['mode'],
+			BuildQueueMOde::from($data['mode']),
 		);
 	}
 

@@ -202,8 +202,8 @@ class Planet
 		return $this->buildQueue;
 	}
 
-	public function addBuildingToQueue(): array
+	public function addBuildingToQueue(BuildingQueueItem $item): void
 	{
-
+		$this->buildQueue[] = $item;
 	}
 }
