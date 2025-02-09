@@ -1,9 +1,7 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Exception;
 
-class BuildQueueFullException extends GameException
-{
-
-}
+class BuildQueueFullException extends GameException {}

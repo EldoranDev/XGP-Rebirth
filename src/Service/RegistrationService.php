@@ -9,7 +9,7 @@ use App\Entity\User;
 use App\Entity\Statistic;
 use Doctrine\ORM\EntityManagerInterface;
 
-class RegistrationService
+final readonly class RegistrationService
 {
     public function __construct(
         private EntityManagerInterface $entityManager,

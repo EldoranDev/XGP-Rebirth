@@ -108,8 +108,6 @@ class BuildingService
 		$maxQueueSize = 1;
 		$currentQueueSize = count($planet->getBuildQueue());
 
-		dump($planet);
-
 		$currentLevel = $planet->getBuilding($building->id);
 		$resources = $building->getCosts($currentLevel + 1);
 		$time = $this->getConstructionTime(
@@ -147,4 +145,6 @@ class BuildingService
 		$this->entityManager->persist($planet);
 		$this->entityManager->flush();
 	}
+
+
 }

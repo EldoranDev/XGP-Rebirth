@@ -17,25 +17,25 @@ final class GameExtension extends AbstractExtension
 {
     public function __construct(
         private readonly ResourceService $optionsService,
-		private readonly BuildingService $buildingService,
+        private readonly BuildingService $buildingService,
     ) {}
 
     public function getFilters(): array
-	{
-		return [
-			new TwigFilter('constructionTime', [$this, 'getConstructionTime']),
-		];
-	}
+    {
+        return [
+            new TwigFilter('constructionTime', [$this, 'getConstructionTime']),
+        ];
+    }
 
-	public function getConstructionTime(Building $building, Planet $planet, int $level): string
-	{
-		$time = $this->buildingService->getConstructionTime(
-			$building,
-			$level,
-			$planet->getBuilding('robotics_factory'),
-			$planet->getBuilding('nanite_factory'),
-		);
+    public function getConstructionTime(Building $building, Planet $planet, int $level): string
+    {
+        $time = $this->buildingService->getConstructionTime(
+            $building,
+            $level,
+            $planet->getBuilding('robotics_factory'),
+            $planet->getBuilding('nanite_factory'),
+        );
 
-		return gmdate('H:i:s', $time);
-	}
+        return gmdate('H:i:s', $time);
+    }
 }
