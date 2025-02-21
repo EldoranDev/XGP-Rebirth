@@ -11,9 +11,9 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/game/info', name: 'game_info_')]
 class InfoController extends AbstractController
 {
-	#[Route('/building/{id}', name: 'building')]
-	public function buildingInfo(): Response
-	{
-		return new Response("BUILDING INFO");
-	}
+    #[Route('/building/{id}', name: 'building')]
+    public function buildingInfo(): Response
+    {
+        return new Response("BUILDING INFO");
+    }
 }

@@ -38,7 +38,11 @@
                     {{ _self.requirements(building.costs(buildingLevel + 1), planet) }}<br>
                     <br>Construction Time: {{ building|constructionTime(planet, buildingLevel + 1) }}
                 </td>
-                <td class="k"><font color="#ff0000">Improve</font></td>
+                <td class="k">
+                    <a href="{{ path('game_buildings_build', { buildingId: building.id }) }}">
+                        <font color="#00ff00">Improve</font>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>

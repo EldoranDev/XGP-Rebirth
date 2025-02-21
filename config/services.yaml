@@ -20,17 +20,6 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/Core'
-            - '../src/Helpers'
-            - '../src/Libraries'
-            - '../src/GameModel'
-            - '../src/Repository/Adm'
-            - '../src/Repository/Ajax'
-            - '../src/Repository/Core'
-            - '../src/Repository/XG-Game'
-            - '../src/Repository/Home'
-            - '../src/Repository/Install'
-            - '../src/Repository/Libraries'
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'

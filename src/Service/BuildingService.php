@@ -2,8 +2,14 @@
 
 namespace App\Service;
 
+use App\Dto\BuildingQueueItem;
+use App\Entity\Planet;
+use App\Enum\BuildQueueMode;
+use App\Exception\BuildQueueFullException;
+use App\Exception\NotEnoughResourceException;
 use App\GameModel\Building;
 use App\GameModel\ProducingBuilding;
+use Doctrine\ORM\EntityManagerInterface;
 
 class BuildingService
 {
@@ -25,7 +31,9 @@ class BuildingService
 	private const array COST_FACTORS = ['metal', 'crystal'];
 
     public function __construct(
-		private OptionsService $optionsService,
+		private readonly OptionsService $optionsService,
+		private readonly ResourceService $resourceService,
+		private readonly EntityManagerInterface $entityManager,
 
         iterable $buildings,
 		iterable $producer,
@@ -53,6 +61,11 @@ class BuildingService
 		return [
 			$category => $this->categories[$category] ?? [],
 		];
+	}
+
+	public function getBuilding(string $building): ?Building
+	{
+		return $this->buildings['game.building.' . $building] ?? null;
 	}
 
     /**
@@ -89,4 +102,49 @@ class BuildingService
 
 		return $costs / (2500 * $reduction * $robotics * $nanite * $universeSpeed) * 3600;
 	}
+
+	public function upgradeBuilding(Building $building, Planet $planet): void
+	{
+		$maxQueueSize = 1;
+		$currentQueueSize = count($planet->getBuildQueue());
+
+		$currentLevel = $planet->getBuilding($building->id);
+		$resources = $building->getCosts($currentLevel + 1);
+		$time = $this->getConstructionTime(
+			$building,
+			$currentLevel + 1,
+			$planet->getBuilding('robotic_factory'),
+			$planet->getBuilding('nanite_factory'),
+		);
+
+		// TODO: check if planet/moon is allowed to build this
+
+		// TODO: implement premium checks for build queue
+		if ($currentQueueSize >= $maxQueueSize) {
+			throw new BuildQueueFullException();
+		}
+
+		if (!$this->resourceService->hasResources($planet, $resources)) {
+			throw new NotEnoughResourceException();
+		}
+
+		// TODO: Validate fields
+
+		// TODO: Don't upgrade buildings that are currently in use
+
+		// TODO: Factor in Robot/Nanite Factory
+
+		$planet->addBuildingToQueue(new BuildingQueueItem(
+			$building->id,
+			$currentLevel + 1,
+			$time,
+			time() + $time,
+			BuildQueueMode::Build,
+		));
+
+		$this->entityManager->persist($planet);
+		$this->entityManager->flush();
+	}
+
+
 }

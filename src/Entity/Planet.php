@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Doctrine\Type\BuildingQueueType;
+use App\Dto\BuildingQueueItem;
 use App\Repository\PlanetRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,9 +37,19 @@ class Planet
     #[ORM\Column(type: 'json')]
     private array $buildings = [];
 
-	/**
-	 * @param array $resources
-	 */
+    /**
+     * @var array<BuildingQueueItem>
+     */
+    #[ORM\Column(type: BuildingQueueType::TYPE_NAME)]
+    private array $buildQueue = [];
+
+    #[ORM\Column(type: 'integer')]
+    private int $buildingPoints = 0;
+
+    /**
+     * @param array<string, int> $resources
+     * @param array<string, int> $resourcesPerHour
+     */
     public function __construct(
         #[ORM\Column(length: 255)]
         private string $name,
@@ -53,10 +65,10 @@ class Planet
         private PlanetSize $size,
         #[ORM\Embedded(class: PlanetTemperature::class, columnPrefix: 'temperature_')]
         private PlanetTemperature $temperature,
-		#[ORM\Column(type: 'json')]
-		private array $resources = [],
-		#[ORM\Column(type: 'json')]
-		private array $resourcesPerHour = [],
+        #[ORM\Column(type: 'json')]
+        private array $resources = [],
+        #[ORM\Column(type: 'json')]
+        private array $resourcesPerHour = [],
     ) {
         $this->lastUpdate = new \DateTimeImmutable();
         $this->energy = new PlanetEnergy();
@@ -84,48 +96,48 @@ class Planet
         return $this->name;
     }
 
-	/**
-	 * @return array<string, float>
-	 */
+    /**
+     * @return array<string, float>
+     */
     public function getResources(): array
     {
         return $this->resources;
     }
 
-	public function getResource(string $resource): int
-	{
-		return (int) ($this->resources[$resource] ?? 0);
-	}
+    public function getResource(string $resource): int
+    {
+        return (int) ($this->resources[$resource] ?? 0);
+    }
 
-	public function setResource(string $resource, float $amount): self
-	{
-		$this->resources[$resource] = $amount;
+    public function setResource(string $resource, float $amount): self
+    {
+        $this->resources[$resource] = $amount;
 
-		return $this;
-	}
+        return $this;
+    }
 
 
-	public function setResourcePerHour(string $resource, int $amount): self
-	{
-		$this->resourcesPerHour[$resource] = $amount;
+    public function setResourcePerHour(string $resource, int $amount): self
+    {
+        $this->resourcesPerHour[$resource] = $amount;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getResourcePerHour(string $resource): int
-	{
-		return $this->resourcesPerHour[$resource] ?? 0;
-	}
+    public function getResourcePerHour(string $resource): int
+    {
+        return $this->resourcesPerHour[$resource] ?? 0;
+    }
 
-	public function getUserId(): int
-	{
-		return $this->userId;
-	}
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
 
-	public function getType(): PlanetType
-	{
-		return $this->type;
-	}
+    public function getType(): PlanetType
+    {
+        return $this->type;
+    }
 
     public function getImage(): string
     {
@@ -145,6 +157,13 @@ class Planet
     public function getCurrentFields(): int
     {
         return $this->fieldsCurrent;
+    }
+
+    public function setCurrentFields(int $current): self
+    {
+        $this->fieldsCurrent = $current;
+
+        return $this;
     }
 
     public function getTemperature(): PlanetTemperature
@@ -171,7 +190,7 @@ class Planet
 
     public function getMaxResource(string $resource): int
     {
-		$storageLevel = $this->getBuilding($resource . '_storage');
+        $storageLevel = $this->getBuilding($resource . '_storage');
 
         return (int) (2.5 * pow(M_E, (20 * ($storageLevel) / 33))) * 5000;
     }
@@ -186,5 +205,33 @@ class Planet
     public function getLastUpdate(): \DateTimeImmutable
     {
         return $this->lastUpdate;
+    }
+
+    public function getBuildQueue(): array
+    {
+        return array_values($this->buildQueue);
+    }
+
+    public function addBuildingToQueue(BuildingQueueItem $item): void
+    {
+        $this->buildQueue[] = $item;
+    }
+
+    public function setBuildingQueue(array $buildQueue): self
+    {
+        $this->buildQueue = $buildQueue;
+        return $this;
+    }
+
+    public function getBuildingPoints(): int
+    {
+        return $this->buildingPoints;
+    }
+
+    public function setBuildingPoints(int $buildingPoints): self
+    {
+        $this->buildingPoints = $buildingPoints;
+
+        return $this;
     }
 }

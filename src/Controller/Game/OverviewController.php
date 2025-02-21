@@ -16,10 +16,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/game', name: 'game_overview_')]
 class OverviewController extends AbstractController
 {
-    public function __construct(
-        private PlanetRepository $planetRepository,
-        private UserStatisticRepository $userStatisticRepository,
-    ) {}
+    public function __construct() {}
 
     #[Route('/', name: 'index')]
     public function overviewAction(): Response

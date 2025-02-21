@@ -41,4 +41,3 @@ define('BASIC_RESOURCE_MARKET_DM', [
 
 // PHALANX COST
 define('PHALANX_COST', 10000);
-

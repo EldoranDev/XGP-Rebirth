@@ -6,24 +6,24 @@ namespace App\GameModel;
 
 class ProducingBuilding extends Building
 {
-	/**
-	 * @param array<string, string> $production
-	 */
+    /**
+     * @param array<string, string> $production
+     */
     public function __construct(
         string $id,
         string $name,
-		string $category,
-		string $image,
-		array $costs,
-		public string $energy,
-		public readonly array $production,
+        string $category,
+        string $image,
+        array $costs,
+        public string $energy,
+        public readonly array $production,
     ) {
-		parent::__construct(
-			id: $id,
-			name: $name,
-			category: $category,
-			image: $image,
-			costs: $costs,
-		);
-	}
+        parent::__construct(
+            id: $id,
+            name: $name,
+            category: $category,
+            image: $image,
+            costs: $costs,
+        );
+    }
 }
