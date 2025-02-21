@@ -63,6 +63,7 @@ class BuildingsController extends AbstractController
                 $user->getCurrentPlanet(),
             );
         } catch (GameException $e) {
+            // TODO: add error handling
             dump($e);
         } catch (\Throwable $e) {
             // Some unknown error occurred

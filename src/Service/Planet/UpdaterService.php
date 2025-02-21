@@ -6,12 +6,14 @@ namespace App\Service\Planet;
 
 use App\Entity\Planet;
 use App\Entity\User;
+use App\Enum\BuildQueueMode;
 use App\ExpressionLanguage\GameExpressionLanguage;
 use App\Service\OptionsService;
 use App\Service\ProductionService;
 use App\Service\BuildingService;
 use App\Service\ResourceService;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Clock\ClockInterface;
 
 final readonly class UpdaterService
 {
@@ -25,10 +27,10 @@ final readonly class UpdaterService
         private ProductionService $productionService,
         private BuildingService $structureService,
 		private ResourceService $resourceService,
-        private EntityManagerInterface $entityManager,
+		private ClockInterface $clock,
     ) {}
 
-    public function updateResources(User $user, Planet $planet, \DateTimeImmutable $updateTime): void
+    public function updateResources(User $user, Planet $planet): void
     {
         // Move this somewhere else to pre-load all always needed options
         $this->optionsService->loadOptions([
@@ -123,9 +125,9 @@ final readonly class UpdaterService
             ->setMax($maxEnergy)
         ;
 
-        $productionTime = $updateTime->getTimestamp() - $planet->getLastUpdate()->getTimestamp();
+        $productionTime = $this->clock->now()->getTimestamp() - $planet->getLastUpdate()->getTimestamp();
 
-        $planet->setLastUpdate($updateTime);
+        $planet->setLastUpdate($this->clock->now());
 
         // TODO: Issue #1
         // https://github.com/EldoranDev/XGP-Rebirth/issues/1
@@ -141,8 +143,51 @@ final readonly class UpdaterService
 				));
 			}
 		}
-
-        $this->entityManager->persist($planet);
-        $this->entityManager->flush();
     }
+
+	/**
+	 * Updates the build queue of a planet and returns if a building was just finished
+	 *
+	 * @param Planet $planet
+	 * @return bool
+	 */
+	public function updateBuildings(Planet $planet): bool
+	{
+		$queue = $planet->getBuildQueue();
+
+		if (count($queue) === 0) {
+			return false;
+		}
+
+		$queueItem = array_shift($queue);
+
+		if ($queueItem->endTime > $this->clock->now()->getTimestamp()) {
+			return false;
+		}
+
+		$currentFields = $planet->getCurrentFields();
+		$maxFields = $planet->getSize()->getFieldsMax();
+
+		if ($queueItem->mode === BuildQueueMode::Build) {
+			$currentFields++;
+			// TODO: Add support for moonbase
+
+		} else {
+			$currentFields--;
+		}
+
+		$planet
+			->setBuilding(
+				$queueItem->id,
+				$queueItem->level,
+			)
+			->setBuildingQueue($queue)
+			->setCurrentFields($currentFields)
+			// TODO #4: Update points
+			// https://github.com/EldoranDev/XGP-Rebirth/issues/4
+			->getSize()->setFieldsMax($maxFields)
+		;
+
+		return true;
+	}
 }

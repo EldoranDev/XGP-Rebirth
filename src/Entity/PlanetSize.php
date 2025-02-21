@@ -25,4 +25,11 @@ class PlanetSize
     {
         return $this->fieldsMax;
     }
+
+    public function setFieldsMax(int $fieldsMax): self
+    {
+        $this->fieldsMax = $fieldsMax;
+
+        return $this;
+    }
 }

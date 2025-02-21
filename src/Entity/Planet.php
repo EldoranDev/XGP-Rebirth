@@ -43,6 +43,9 @@ class Planet
     #[ORM\Column(type: BuildingQueueType::TYPE_NAME)]
     private array $buildQueue = [];
 
+    #[ORM\Column(type: 'integer')]
+    private int $buildingPoints = 0;
+
     /**
      * @param array<string, int> $resources
      * @param array<string, int> $resourcesPerHour
@@ -156,6 +159,13 @@ class Planet
         return $this->fieldsCurrent;
     }
 
+    public function setCurrentFields(int $current): self
+    {
+        $this->fieldsCurrent = $current;
+
+        return $this;
+    }
+
     public function getTemperature(): PlanetTemperature
     {
         return $this->temperature;
@@ -199,11 +209,29 @@ class Planet
 
     public function getBuildQueue(): array
     {
-        return $this->buildQueue;
+        return array_values($this->buildQueue);
     }
 
     public function addBuildingToQueue(BuildingQueueItem $item): void
     {
         $this->buildQueue[] = $item;
+    }
+
+    public function setBuildingQueue(array $buildQueue): self
+    {
+        $this->buildQueue = $buildQueue;
+        return $this;
+    }
+
+    public function getBuildingPoints(): int
+    {
+        return $this->buildingPoints;
+    }
+
+    public function setBuildingPoints(int $buildingPoints): self
+    {
+        $this->buildingPoints = $buildingPoints;
+
+        return $this;
     }
 }
