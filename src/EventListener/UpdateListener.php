@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\EventListener;
 
@@ -9,7 +10,7 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-#[AsEventListener(event: ControllerEvent::class)]
+#[AsEventListener(event: ControllerEvent::class, priority: 100)]
 final readonly class UpdateListener
 {
     public function __construct(

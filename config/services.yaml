@@ -47,3 +47,5 @@ services:
                 - metal_basic_income
                 - crystal_basic_income
                 - deuterium_basic_income
+                - stat_last_update
+                - stat_update_time

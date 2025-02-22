@@ -19,6 +19,7 @@ class AppFixtures extends Fixture
         $manager->persist(new Option('metal_basic_income', 90, OptionType::INT));
         $manager->persist(new Option('crystal_basic_income', 45, OptionType::INT));
         $manager->persist(new Option('deuterium_basic_income', 0, OptionType::INT));
+		$manager->persist(new Option('stat_update_time', 900, OptionType::INT));
 
         $manager->flush();
     }
