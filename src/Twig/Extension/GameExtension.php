@@ -7,16 +7,12 @@ namespace App\Twig\Extension;
 use App\Entity\Planet;
 use App\GameModel\Building;
 use App\Service\BuildingService;
-use App\Service\OptionsService;
-use App\Service\ResourceService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
-use Twig\TwigFunction;
 
 final class GameExtension extends AbstractExtension
 {
     public function __construct(
-        private readonly ResourceService $optionsService,
         private readonly BuildingService $buildingService,
     ) {}
 

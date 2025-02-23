@@ -11,11 +11,14 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class OptionsService
 {
+    /**
+     * @var array <string, int|float|string>
+     */
     private array $options = [];
 
     public function __construct(
-        private OptionRepository $optionRepository,
-        private EntityManagerInterface $entityManager,
+        private readonly OptionRepository $optionRepository,
+        private readonly EntityManagerInterface $entityManager,
     ) {}
 
     public function loadOptions(array $options): void

@@ -23,7 +23,7 @@ final class OptionsExtension extends AbstractExtension
         ];
     }
 
-    public function getOptionValue(string $optionKey, mixed $default = null): mixed
+    public function getOptionValue(string $optionKey, int|float|string|null $default = null): mixed
     {
         return $this->optionsService->getOption($optionKey, $default);
     }

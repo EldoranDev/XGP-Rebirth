@@ -35,9 +35,9 @@ final readonly class LocatorService
     {
         if ($coordinates === null) {
             $coordinates = new Coordinates(
-                $this->optionsService->getOption(self::OPT_LAST_SET_GALAXY_POS, 1),
-                $this->optionsService->getOption(self::OPT_LAST_SET_SYSTEM_POS, 1),
-                $this->optionsService->getOption(self::OPT_LAST_SET_PLANET_POS, 4),
+				(int)$this->optionsService->getOption(self::OPT_LAST_SET_GALAXY_POS, 1),
+				(int)$this->optionsService->getOption(self::OPT_LAST_SET_SYSTEM_POS, 1),
+				(int)$this->optionsService->getOption(self::OPT_LAST_SET_PLANET_POS, 4),
             );
         }
 

@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Enum\BuildQueueMode;
 use App\ExpressionLanguage\GameExpressionLanguage;
 use App\Service\OptionsService;
+use App\Service\PointsService;
 use App\Service\ProductionService;
 use App\Service\BuildingService;
 use App\Service\ResourceService;
@@ -23,11 +24,13 @@ final readonly class UpdaterService
     private const string OPTION_DEUTERIUM_BASIC_INCOME = 'deuterium_basic_income';
 
     public function __construct(
-        private OptionsService $optionsService,
+        private OptionsService    $optionsService,
         private ProductionService $productionService,
-        private BuildingService $structureService,
-		private ResourceService $resourceService,
-		private ClockInterface $clock,
+        private BuildingService   $buildingService,
+		private ResourceService   $resourceService,
+		private PointsService     $pointsService,
+		private ClockInterface    $clock,
+		private EntityManagerInterface $entityManager,
     ) {}
 
     public function updateResources(User $user, Planet $planet): void
@@ -78,7 +81,7 @@ final readonly class UpdaterService
 
         $evaluator = GameExpressionLanguage::getInstance();
 
-        foreach ($this->structureService->getProducer() as $building) {
+        foreach ($this->buildingService->getProducer() as $building) {
             $evalParams = [
                 'level' => $planet->getBuilding($building->id),
                 'efficiency' => 100,
@@ -151,7 +154,7 @@ final readonly class UpdaterService
 	 * @param Planet $planet
 	 * @return bool
 	 */
-	public function updateBuildings(Planet $planet): bool
+	public function updateBuildings(User $user, Planet $planet): bool
 	{
 		$queue = $planet->getBuildQueue();
 
@@ -168,12 +171,19 @@ final readonly class UpdaterService
 		$currentFields = $planet->getCurrentFields();
 		$maxFields = $planet->getSize()->getFieldsMax();
 
+		$building = $this->buildingService->getBuilding($queueItem->id);
+
+		$points = $this->pointsService->getBuildingPoints(
+			$building,
+			$queueItem->level,
+		);
+
 		if ($queueItem->mode === BuildQueueMode::Build) {
 			$currentFields++;
 			// TODO: Add support for moonbase
-
 		} else {
 			$currentFields--;
+			$points *= -1;
 		}
 
 		$planet
@@ -183,10 +193,20 @@ final readonly class UpdaterService
 			)
 			->setBuildingQueue($queue)
 			->setCurrentFields($currentFields)
-			// TODO #4: Update points
-			// https://github.com/EldoranDev/XGP-Rebirth/issues/4
+			->setBuildingPoints(
+				$planet->getBuildingPoints() + $points,
+			)
 			->getSize()->setFieldsMax($maxFields)
 		;
+
+		$stats = $user->getStatistic();
+
+		$stats->setBuildingsPoints(
+			$stats->getBuildingsPoints() + $points,
+		);
+
+		$this->entityManager->persist($planet);
+		$this->entityManager->persist($user->getStatistic());
 
 		return true;
 	}
