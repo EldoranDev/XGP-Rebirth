@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\EventListener;
 
 use App\Entity\User;
+use App\Repository\UserStatisticRepository;
 use App\Service\Planet;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
@@ -34,9 +35,8 @@ final readonly class UpdateListener
         assert($user instanceof User);
 
         $this->planetUpdater->updateResources($user, $user->getCurrentPlanet());
-        $this->planetUpdater->updateBuildings($user->getCurrentPlanet());
+        $this->planetUpdater->updateBuildings($user, $user->getCurrentPlanet());
 
-        $this->entityManager->persist($user->getCurrentPlanet());
         $this->entityManager->flush();
     }
 }

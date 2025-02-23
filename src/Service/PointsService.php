@@ -9,6 +9,13 @@ final readonly class PointsService
 {
 	public function getBuildingPoints(Building $building, int $level): int
 	{
-		return 0;
+		$costs = $building->getCosts($level);
+
+		$sum = 0;
+		foreach ($costs as $cost) {
+			$sum += $cost;
+		}
+
+		return (int)round($sum / 1000);
 	}
 }
