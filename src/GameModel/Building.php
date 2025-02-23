@@ -23,9 +23,9 @@ class Building
         $this->costsResources = $costs['resources'];
     }
 
-	/**
-	 * @return array<string, int>
-	 */
+    /**
+     * @return array<string, int>
+     */
     public function getCosts(int $level): array
     {
         return array_map(

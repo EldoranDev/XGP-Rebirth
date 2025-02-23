@@ -14,12 +14,18 @@ final readonly class ResourceService
      */
     private array $resources;
 
+    /**
+     * @param iterable<string, Resource> $resources
+     */
     public function __construct(
         iterable $resources,
     ) {
         $this->resources = iterator_to_array($resources);
     }
 
+    /**
+     * @return array<string>
+     */
     public function getResourceIds(): array
     {
         return array_keys($this->resources);

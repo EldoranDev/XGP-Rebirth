@@ -1,91 +1,13 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Constant ONE_WEEK not found\.$#'
-			identifier: constant.notFound
-			count: 1
-			path: config/constants.php
-
-		-
-			message: '#^Parameter \#1 \$environment of class App\\Kernel constructor expects string, mixed given\.$#'
-			identifier: argument.type
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
 			count: 1
 			path: public/index.php
 
 		-
-			message: '#^Binary operation "\." between ''\.\./\.\./'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Call to an undefined method object\:\:index\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Call to method bootUp\(\) on an unknown class App\\Core\\Common\.$#'
-			identifier: class.notFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Constant INSTALL_PATH not found\.$#'
-			identifier: constant.notFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Instantiated class App\\Core\\Common not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Parameter \#1 \$string of function ucfirst expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: public/install/index.php
-
-		-
-			message: '#^Path in require\(\) "\.\./\.\./app/Core/Common\.php" is not a file or it does not exist\.$#'
-			identifier: require.fileNotFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Path in require\(\) "\.\./\.\./app/Core\\Common\.php" is not a file or it does not exist\.$#'
-			identifier: require.fileNotFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Path in require\(\) "\.\./\.\./app\\Core/Common\.php" is not a file or it does not exist\.$#'
-			identifier: require.fileNotFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Path in require\(\) "\.\./\.\./app\\Core\\Common\.php" is not a file or it does not exist\.$#'
-			identifier: require.fileNotFound
-			count: 1
-			path: public/install/index.php
-
-		-
-			message: '#^Parameter \#2 \$value of class App\\Entity\\Option constructor expects string, float given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: '#^Parameter \#2 \$value of class App\\Entity\\Option constructor expects string, int given\.$#'
-			identifier: argument.type
-			count: 5
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition\:\:children\(\)\.$#'
+			message: '#^Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\:\:stringNode\(\)\.$#'
 			identifier: method.notFound
 			count: 1
 			path: src/DependencyInjection/GameConfiguration.php
@@ -93,13 +15,13 @@ parameters:
 		-
 			message: '#^Cannot call method arrayNode\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 5
+			count: 4
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
 			message: '#^Cannot call method arrayPrototype\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 2
+			count: 1
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
@@ -111,7 +33,7 @@ parameters:
 		-
 			message: '#^Cannot call method children\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 5
+			count: 4
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
@@ -123,7 +45,7 @@ parameters:
 		-
 			message: '#^Cannot call method end\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 28
+			count: 27
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
@@ -153,13 +75,13 @@ parameters:
 		-
 			message: '#^Cannot call method stringNode\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 10
+			count: 8
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
 			message: '#^Cannot call method useAttributeAsKey\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 2
+			count: 1
 			path: src/DependencyInjection/GameConfiguration.php
 
 		-
@@ -167,6 +89,12 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: src/DependencyInjection/GameConfiguration.php
+
+		-
+			message: '#^Cannot access offset ''buildings'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/GameExtension.php
 
 		-
 			message: '#^Cannot access offset ''category'' on mixed\.$#'
@@ -212,6 +140,12 @@ parameters:
 
 		-
 			message: '#^Cannot access offset ''production'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/DependencyInjection/GameExtension.php
+
+		-
+			message: '#^Cannot access offset ''resources'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/DependencyInjection/GameExtension.php
@@ -349,148 +283,28 @@ parameters:
 			path: src/Entity/Planet.php
 
 		-
-			message: '#^Property App\\Entity\\Planet\:\:\$destroyed is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Planet.php
-
-		-
-			message: '#^Property App\\Entity\\Planet\:\:\$planetId \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
-			identifier: property.unusedType
-			count: 1
-			path: src/Entity/Planet.php
-
-		-
 			message: '#^Property App\\Entity\\Planet\:\:\$resources \(array\<string, int\>\) does not accept array\<string, float\|int\>\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Entity/Planet.php
 
 		-
-			message: '#^Property App\\Entity\\Premium\:\:\$officierAdmiral is never read, only written\.$#'
-			identifier: property.onlyWritten
+			message: '#^Property App\\Entity\\Premium\:\:\$user type mapping mismatch\: property can contain App\\Entity\\User\|null but database expects App\\Entity\\User\.$#'
+			identifier: doctrine.associationType
 			count: 1
 			path: src/Entity/Premium.php
 
 		-
-			message: '#^Property App\\Entity\\Premium\:\:\$officierCommander is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Premium.php
-
-		-
-			message: '#^Property App\\Entity\\Premium\:\:\$officierEngineer is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Premium.php
-
-		-
-			message: '#^Property App\\Entity\\Premium\:\:\$officierGeologist is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Premium.php
-
-		-
-			message: '#^Property App\\Entity\\Premium\:\:\$officierTechnocrat is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Premium.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$armorTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
+			message: '#^Property App\\Entity\\Research\:\:\$user type mapping mismatch\: property can contain App\\Entity\\User\|null but database expects App\\Entity\\User\.$#'
+			identifier: doctrine.associationType
 			count: 1
 			path: src/Entity/Research.php
 
 		-
-			message: '#^Property App\\Entity\\Research\:\:\$astrophysics is never read, only written\.$#'
-			identifier: property.onlyWritten
+			message: '#^Property App\\Entity\\Statistic\:\:\$user type mapping mismatch\: property can contain App\\Entity\\User\|null but database expects App\\Entity\\User\.$#'
+			identifier: doctrine.associationType
 			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$combustionDrive is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$computerTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$current is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$espionageTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$gravitonTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$hyperspaceDrive is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$hyperspaceTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$impulseDrive is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$intergalacticResearchNetwork is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$ionicTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$laserTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$plasmaTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$shieldingTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
-
-		-
-			message: '#^Property App\\Entity\\Research\:\:\$weaponsTechnology is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Entity/Research.php
+			path: src/Entity/Statistic.php
 
 		-
 			message: '#^Cannot call method getCoordinates\(\) on App\\Entity\\Planet\|null\.$#'
@@ -523,14 +337,26 @@ parameters:
 			path: src/Entity/User.php
 
 		-
+			message: '#^Property App\\Entity\\User\:\:\$email type mapping mismatch\: property can contain string\|null but database expects string\.$#'
+			identifier: doctrine.columnType
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Property App\\Entity\\User\:\:\$password type mapping mismatch\: property can contain string\|null but database expects string\.$#'
+			identifier: doctrine.columnType
+			count: 1
+			path: src/Entity/User.php
+
+		-
 			message: '#^Property App\\Entity\\User\:\:\$roles type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Entity/User.php
 
 		-
-			message: '#^Property App\\Entity\\User\:\:\$userId \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
-			identifier: property.unusedType
+			message: '#^Property App\\Entity\\User\:\:\$username type mapping mismatch\: property can contain string\|null but database expects string\.$#'
+			identifier: doctrine.columnType
 			count: 1
 			path: src/Entity/User.php
 
@@ -547,13 +373,13 @@ parameters:
 			path: src/EventListener/StatisticsListener.php
 
 		-
-			message: '#^Method App\\GameModel\\Building\:\:__construct\(\) has parameter \$costs with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Class App\\Form\\RegistrationFormType extends generic class Symfony\\Component\\Form\\AbstractType but does not specify its types\: TData$#'
+			identifier: missingType.generics
 			count: 1
-			path: src/GameModel/Building.php
+			path: src/Form/RegistrationFormType.php
 
 		-
-			message: '#^Method App\\GameModel\\Building\:\:getCosts\(\) return type has no value type specified in iterable type array\.$#'
+			message: '#^Method App\\GameModel\\Building\:\:__construct\(\) has parameter \$costs with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/GameModel/Building.php
@@ -607,20 +433,32 @@ parameters:
 			path: src/Helpers/StringsHelper.php
 
 		-
-			message: '#^Class App\\Repository\\UserRepository extends generic class Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but does not specify its types\: T$#'
+			message: '#^Class App\\Repository\\UserRepository extends generic class Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but does not specify its types\: TEntityClass$#'
 			identifier: missingType.generics
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Instanceof between App\\Entity\\User and App\\Entity\\User will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^The @implements tag of class App\\Repository\\UserRepository describes Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but the class implements\: Symfony\\Component\\Security\\Core\\User\\PasswordUpgraderInterface$#'
+			identifier: generics.wrongParent
 			count: 1
 			path: src/Repository/UserRepository.php
 
 		-
 			message: '#^Binary operation "\*" between \(float\|int\) and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 1
-			path: src/Service/BuildingService.php
-
-		-
-			message: '#^Binary operation "\+\=" between \(float\|int\) and mixed results in an error\.$#'
-			identifier: assignOp.invalid
 			count: 1
 			path: src/Service/BuildingService.php
 
@@ -673,14 +511,14 @@ parameters:
 			path: src/Service/BuildingService.php
 
 		-
-			message: '#^PHPDoc tag @var has invalid value \(array\<string, Building\>\)\)\: Unexpected token "\)", expected TOKEN_HORIZONTAL_WS at offset 36 on line 2$#'
-			identifier: phpDoc.parseError
+			message: '#^Method App\\Service\\BuildingService\:\:getConstructionTime\(\) should return int but returns float\|int\.$#'
+			identifier: return.type
 			count: 1
 			path: src/Service/BuildingService.php
 
 		-
-			message: '#^Parameter \#2 \$requirements of method App\\Service\\ResourceService\:\:hasResources\(\) expects array\<string, int\>, array given\.$#'
-			identifier: argument.type
+			message: '#^PHPDoc tag @var has invalid value \(array\<string, Building\>\)\)\: Unexpected token "\)", expected TOKEN_HORIZONTAL_WS at offset 36 on line 2$#'
+			identifier: phpDoc.parseError
 			count: 1
 			path: src/Service/BuildingService.php
 
@@ -711,7 +549,7 @@ parameters:
 		-
 			message: '#^Method App\\Service\\OptionsService\:\:getOption\(\) should return float\|int\|string\|null but returns mixed\.$#'
 			identifier: return.type
-			count: 2
+			count: 1
 			path: src/Service/OptionsService.php
 
 		-
@@ -721,49 +559,13 @@ parameters:
 			path: src/Service/OptionsService.php
 
 		-
-			message: '#^Property App\\Service\\OptionsService\:\:\$options type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
+			message: '#^Property App\\Service\\OptionsService\:\:\$options \(array\<string, float\|int\|string\>\) does not accept array\<string, mixed\>\.$#'
+			identifier: assign.propertyType
+			count: 2
 			path: src/Service/OptionsService.php
 
 		-
-			message: '#^Parameter \#2 \$fieldsMax of class App\\Entity\\PlanetSize constructor expects int, float\|int\|string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/CreationService.php
-
-		-
-			message: '#^Parameter \$resources of class App\\Entity\\Planet constructor expects array\<string, int\>, array\<int\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/CreationService.php
-
-		-
-			message: '#^Parameter \#1 \$galaxy of class App\\Entity\\Coordinates constructor expects int, float\|int\|string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/LocatorService.php
-
-		-
-			message: '#^Parameter \#2 \$system of class App\\Entity\\Coordinates constructor expects int, float\|int\|string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/LocatorService.php
-
-		-
-			message: '#^Parameter \#3 \$position of class App\\Entity\\Coordinates constructor expects int, float\|int\|string\|null given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/LocatorService.php
-
-		-
 			message: '#^Binary operation "\+" between int and float\|int\|string results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Binary operation "\." between mixed and ''_basic_income'' results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
 			path: src/Service/Planet/UpdaterService.php
@@ -777,18 +579,30 @@ parameters:
 		-
 			message: '#^Cannot access property \$id on mixed\.$#'
 			identifier: property.nonObject
-			count: 1
+			count: 2
 			path: src/Service/Planet/UpdaterService.php
 
 		-
 			message: '#^Cannot access property \$level on mixed\.$#'
 			identifier: property.nonObject
-			count: 1
+			count: 2
 			path: src/Service/Planet/UpdaterService.php
 
 		-
 			message: '#^Cannot access property \$mode on mixed\.$#'
 			identifier: property.nonObject
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
+			message: '#^Cannot call method getBuildingsPoints\(\) on App\\Entity\\Statistic\|null\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
+			message: '#^Cannot call method setBuildingsPoints\(\) on App\\Entity\\Statistic\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: src/Service/Planet/UpdaterService.php
 
@@ -805,39 +619,27 @@ parameters:
 			path: src/Service/Planet/UpdaterService.php
 
 		-
+			message: '#^Parameter \#1 \$building of method App\\Service\\BuildingService\:\:getBuilding\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
+			message: '#^Parameter \#1 \$building of method App\\Service\\PointsService\:\:getBuildingPoints\(\) expects App\\GameModel\\Building, App\\GameModel\\Building\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
+			message: '#^Parameter \#1 \$object of method Doctrine\\Persistence\\ObjectManager\:\:persist\(\) expects object, App\\Entity\\Statistic\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
 			message: '#^Parameter \#1 \$production of method App\\Service\\ProductionService\:\:getProductionAmount\(\) expects float, mixed given\.$#'
 			identifier: argument.type
 			count: 3
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Parameter \#1 \$resource of method App\\Entity\\Planet\:\:getMaxResource\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Parameter \#1 \$resource of method App\\Entity\\Planet\:\:getResource\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Parameter \#1 \$resource of method App\\Entity\\Planet\:\:getResourcePerHour\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Parameter \#1 \$resource of method App\\Entity\\Planet\:\:setResource\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Service/Planet/UpdaterService.php
-
-		-
-			message: '#^Parameter \#1 \$resource of method App\\Entity\\Planet\:\:setResourcePerHour\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
 			path: src/Service/Planet/UpdaterService.php
 
 		-
@@ -853,88 +655,22 @@ parameters:
 			path: src/Service/Planet/UpdaterService.php
 
 		-
+			message: '#^Parameter \#2 \$level of method App\\Service\\PointsService\:\:getBuildingPoints\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Planet/UpdaterService.php
+
+		-
 			message: '#^Parameter \#3 \$mult of method App\\Service\\ProductionService\:\:getProductionAmount\(\) expects float, float\|int\|string\|null given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Service/Planet/UpdaterService.php
 
 		-
-			message: '#^Method App\\Service\\ResourceService\:\:__construct\(\) has parameter \$resources with no value type specified in iterable type iterable\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/ResourceService.php
-
-		-
-			message: '#^Method App\\Service\\ResourceService\:\:getResourceIds\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Service/ResourceService.php
-
-		-
-			message: '#^Property App\\Service\\ResourceService\:\:\$resources \(array\<string, App\\GameModel\\Resource\>\) does not accept array\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: src/Service/ResourceService.php
-
-		-
-			message: '#^Call to an undefined method App\\Entity\\Statistic\:\:setTotalRank\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/Service/StatisticsService.php
-
-		-
-			message: '#^Cannot call method getId\(\) on App\\Entity\\User\|null\.$#'
-			identifier: method.nonObject
-			count: 6
-			path: src/Service/StatisticsService.php
-
-		-
 			message: '#^Strict comparison using \=\=\= between int\<1, max\> and 0 will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: src/Service/StatisticsService.php
-
-		-
-			message: '#^Property App\\Twig\\Extension\\GameExtension\:\:\$optionsService is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Twig/Extension/GameExtension.php
-
-		-
-			message: '#^Parameter \#2 \$default of method App\\Service\\OptionsService\:\:getOption\(\) expects float\|int\|string\|null, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Twig/Extension/OptionsExtension.php
-
-		-
-			message: '#^Method App\\Twig\\GameVariable\:\:getPlanet\(\) never returns null so it can be removed from the return type\.$#'
-			identifier: return.unusedType
-			count: 1
-			path: src/Twig/GameVariable.php
-
-		-
-			message: '#^Property App\\Twig\\GameVariable\:\:\$planetRepository is never read, only written\.$#'
-			identifier: property.onlyWritten
-			count: 1
-			path: src/Twig/GameVariable.php
-
-		-
-			message: '#^Attribute class PHPUnit\\Framework\\Attributes\\DataProvider does not exist\.$#'
-			identifier: attribute.notFound
-			count: 1
-			path: tests/Consistency/CostsTest.php
-
-		-
-			message: '#^Call to an undefined method object\:\:getCosts\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: tests/Consistency/CostsTest.php
-
-		-
-			message: '#^Call to an undefined static method App\\Tests\\Consistency\\CostsTest\:\:assertEquals\(\)\.$#'
-			identifier: staticMethod.notFound
-			count: 1
-			path: tests/Consistency/CostsTest.php
 
 		-
 			message: '#^Method App\\Tests\\Consistency\\CostsTest\:\:metalMineDataProvider\(\) return type has no value type specified in iterable type iterable\.$#'
@@ -955,20 +691,20 @@ parameters:
 			path: tests/Consistency/CostsTest.php
 
 		-
-			message: '#^Attribute class PHPUnit\\Framework\\Attributes\\DataProvider does not exist\.$#'
-			identifier: attribute.notFound
-			count: 2
-			path: tests/Consistency/EnergyTest.php
-
-		-
-			message: '#^Call to an undefined method App\\Tests\\Consistency\\EnergyTest\:\:assertSame\(\)\.$#'
-			identifier: method.notFound
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
 			count: 2
 			path: tests/Consistency/EnergyTest.php
 
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
+			count: 2
+			path: tests/Consistency/EnergyTest.php
+
+		-
+			message: '#^Instanceof between App\\GameModel\\ProducingBuilding and App\\GameModel\\ProducingBuilding will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
 			count: 2
 			path: tests/Consistency/EnergyTest.php
 
@@ -985,50 +721,14 @@ parameters:
 			path: tests/Consistency/EnergyTest.php
 
 		-
-			message: '#^App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:setUp\(\) calls parent\:\:setUp\(\) but App\\Tests\\Unit\\EventListener\\StatisticsListenerTest does not extend any class\.$#'
-			identifier: class.noParent
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Call to an undefined method App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:createMock\(\)\.$#'
+			message: '#^Call to an undefined method App\\Service\\OptionsService\|PHPUnit\\Framework\\MockObject\\MockObject\:\:method\(\)\.$#'
 			identifier: method.notFound
-			count: 3
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Call to an undefined method App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:never\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Call to an undefined method App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:once\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Call to method expects\(\) on an unknown class PHPUnit\\Framework\\MockObject\\MockObject\.$#'
-			identifier: class.notFound
 			count: 2
 			path: tests/Unit/EventListener/StatisticsListenerTest.php
 
 		-
-			message: '#^Call to method method\(\) on an unknown class PHPUnit\\Framework\\MockObject\\MockObject\.$#'
-			identifier: class.notFound
-			count: 2
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Cannot call method method\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Cannot call method willReturnCallback\(\) on mixed\.$#'
-			identifier: method.nonObject
+			message: '#^Call to an undefined method App\\Service\\StatisticsService\|PHPUnit\\Framework\\MockObject\\MockObject\:\:expects\(\)\.$#'
+			identifier: method.notFound
 			count: 2
 			path: tests/Unit/EventListener/StatisticsListenerTest.php
 
@@ -1039,45 +739,9 @@ parameters:
 			path: tests/Unit/EventListener/StatisticsListenerTest.php
 
 		-
-			message: '#^Parameter \#1 \$kernel of class Symfony\\Component\\HttpKernel\\Event\\ControllerEvent constructor expects Symfony\\Component\\HttpKernel\\HttpKernelInterface, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Parameter \#1 \$optionsService of class App\\EventListener\\StatisticsListener constructor expects App\\Service\\OptionsService, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Parameter \#3 \$statisticsService of class App\\EventListener\\StatisticsListener constructor expects App\\Service\\StatisticsService, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Property App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:\$optionsService \(App\\Service\\OptionsService\|PHPUnit\\Framework\\MockObject\\MockObject\) does not accept mixed\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Property App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:\$optionsService has unknown class PHPUnit\\Framework\\MockObject\\MockObject as its type\.$#'
-			identifier: class.notFound
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Property App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:\$statisticsService \(App\\Service\\StatisticsService\|PHPUnit\\Framework\\MockObject\\MockObject\) does not accept mixed\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: tests/Unit/EventListener/StatisticsListenerTest.php
-
-		-
-			message: '#^Property App\\Tests\\Unit\\EventListener\\StatisticsListenerTest\:\:\$statisticsService has unknown class PHPUnit\\Framework\\MockObject\\MockObject as its type\.$#'
-			identifier: class.notFound
-			count: 1
+			message: '#^Trying to mock an undefined method getOption\(\) on class App\\Service\\OptionsService\.$#'
+			identifier: phpunit.mockMethod
+			count: 2
 			path: tests/Unit/EventListener/StatisticsListenerTest.php
 
 		-

@@ -16,72 +16,72 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class StatisticsListenerTest extends TestCase
 {
-	private StatisticsListener $listener;
-	private MockClock $clock;
-	private StatisticsService|MockObject $statisticsService;
-	private OptionsService|MockObject $optionsService;
+    private StatisticsListener $listener;
+    private MockClock $clock;
+    private StatisticsService|MockObject $statisticsService;
+    private OptionsService|MockObject $optionsService;
 
-	public function setUp(): void
-	{
-		parent::setUp();
+    public function setUp(): void
+    {
+        parent::setUp();
 
-		$this->clock = new MockClock();
+        $this->clock = new MockClock();
 
-		$this->optionsService = $this->createMock(OptionsService::class);
-		$this->statisticsService = $this->createMock(StatisticsService::class);
+        $this->optionsService = $this->createMock(OptionsService::class);
+        $this->statisticsService = $this->createMock(StatisticsService::class);
 
-		$this->listener = new StatisticsListener(
-			$this->optionsService,
-			$this->clock,
-			$this->statisticsService,
-		);
-	}
+        $this->listener = new StatisticsListener(
+            $this->optionsService,
+            $this->clock,
+            $this->statisticsService,
+        );
+    }
 
-	public function testWillNotUpdateStatisticsWhenJustUpdated(): void
-	{
-		$lastUpdate = $this->clock->now()->getTimestamp();
-		$updateTime = 900;
+    public function testWillNotUpdateStatisticsWhenJustUpdated(): void
+    {
+        $lastUpdate = $this->clock->now()->getTimestamp();
+        $updateTime = 900;
 
-		$this->optionsService->method('getOption')->willReturnCallback(fn ($option) => match ($option) {
-			'stat_last_update' => $lastUpdate,
-			'stat_update_time' => $updateTime,
-		});
+        $this->optionsService->method('getOption')->willReturnCallback(fn($option) => match ($option) {
+            'stat_last_update' => $lastUpdate,
+            'stat_update_time' => $updateTime,
+        });
 
-		// Move the Time forward but make sure it stays before the required update time
-		$this->clock->modify("+{$updateTime} seconds");
-		$this->clock->modify('-10 seconds');
+        // Move the Time forward but make sure it stays before the required update time
+        $this->clock->modify("+{$updateTime} seconds");
+        $this->clock->modify('-10 seconds');
 
-		$this->statisticsService->expects($this->never())->method('updateStatistics');
+        $this->statisticsService->expects($this->never())->method('updateStatistics');
 
-		$this->listener->onKernelController($this->getEvent());
-	}
+        $this->listener->onKernelController($this->getEvent());
+    }
 
-	public function testWillUpdateStatisticsAfterExpectedTime(): void
-	{
-		$lastUpdate = $this->clock->now()->getTimestamp();
-		$updateTime = 900;
+    public function testWillUpdateStatisticsAfterExpectedTime(): void
+    {
+        $lastUpdate = $this->clock->now()->getTimestamp();
+        $updateTime = 900;
 
-		$this->optionsService->method('getOption')->willReturnCallback(fn ($option) => match ($option) {
-			'stat_last_update' => $lastUpdate,
-			'stat_update_time' => $updateTime,
-		});
+        $this->optionsService->method('getOption')->willReturnCallback(fn($option) => match ($option) {
+            'stat_last_update' => $lastUpdate,
+            'stat_update_time' => $updateTime,
+        });
 
-		// Move the Time forward (Update Time + 10s buffer)
-		$this->clock->modify("+{$updateTime} seconds");
-		$this->clock->modify('+10 seconds');
+        // Move the Time forward (Update Time + 10s buffer)
+        $this->clock->modify("+{$updateTime} seconds");
+        $this->clock->modify('+10 seconds');
 
-		$this->statisticsService->expects($this->once())->method('updateStatistics');
+        $this->statisticsService->expects($this->once())->method('updateStatistics');
 
-		$this->listener->onKernelController($this->getEvent());
-	}
+        $this->listener->onKernelController($this->getEvent());
+    }
 
-	private function getEvent(): ControllerEvent
-	{
-		return new ControllerEvent(
-			$this->createMock(KernelInterface::class),
-			fn () => new Response(null),
-			new Request(),
-			HttpKernelInterface::MAIN_REQUEST,
-		);
-	}
+    private function getEvent(): ControllerEvent
+    {
+        return new ControllerEvent(
+            $this->createMock(KernelInterface::class),
+            fn() => new Response(null),
+            new Request(),
+            HttpKernelInterface::MAIN_REQUEST,
+        );
+    }
 }

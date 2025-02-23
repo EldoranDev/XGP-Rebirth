@@ -77,182 +77,182 @@ class Statistic
         return $this;
     }
 
-	public function getBuildingsRank(): int
-	{
-		return $this->buildingsRank;
-	}
+    public function getBuildingsRank(): int
+    {
+        return $this->buildingsRank;
+    }
 
-	public function setBuildingsRank(int $buildingsRank): self
-	{
-		$this->buildingsRank = $buildingsRank;
+    public function setBuildingsRank(int $buildingsRank): self
+    {
+        $this->buildingsRank = $buildingsRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function setTotalPoints(float $totalPoints): void
-	{
-		$this->totalPoints = $totalPoints;
-	}
+    public function setTotalPoints(float $totalPoints): void
+    {
+        $this->totalPoints = $totalPoints;
+    }
 
-	public function setTotalRank(int $totalRank): void
-	{
-		$this->totalRank = $totalRank;
-	}
+    public function setTotalRank(int $totalRank): void
+    {
+        $this->totalRank = $totalRank;
+    }
 
-	public function getBuildingsOldRank(): int
-	{
-		return $this->buildingsOldRank;
-	}
+    public function getBuildingsOldRank(): int
+    {
+        return $this->buildingsOldRank;
+    }
 
-	public function setBuildingsOldRank(int $buildingsOldRank): self
-	{
-		$this->buildingsOldRank = $buildingsOldRank;
+    public function setBuildingsOldRank(int $buildingsOldRank): self
+    {
+        $this->buildingsOldRank = $buildingsOldRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getDefensePoints(): float
-	{
-		return $this->defensePoints;
-	}
+    public function getDefensePoints(): float
+    {
+        return $this->defensePoints;
+    }
 
-	public function setDefensePoints(float $defensePoints): self
-	{
-		$this->defensePoints = $defensePoints;
+    public function setDefensePoints(float $defensePoints): self
+    {
+        $this->defensePoints = $defensePoints;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getDefenseOldRank(): int
-	{
-		return $this->defenseOldRank;
-	}
+    public function getDefenseOldRank(): int
+    {
+        return $this->defenseOldRank;
+    }
 
-	public function setDefenseOldRank(int $defenseOldRank): self
-	{
-		$this->defenseOldRank = $defenseOldRank;
+    public function setDefenseOldRank(int $defenseOldRank): self
+    {
+        $this->defenseOldRank = $defenseOldRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getDefenseRank(): int
-	{
-		return $this->defenseRank;
-	}
+    public function getDefenseRank(): int
+    {
+        return $this->defenseRank;
+    }
 
-	public function setDefenseRank(int $defenseRank): self
-	{
-		$this->defenseRank = $defenseRank;
+    public function setDefenseRank(int $defenseRank): self
+    {
+        $this->defenseRank = $defenseRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getShipsPoints(): float
-	{
-		return $this->shipsPoints;
-	}
+    public function getShipsPoints(): float
+    {
+        return $this->shipsPoints;
+    }
 
-	public function setShipsPoints(float $shipsPoints): self
-	{
-		$this->shipsPoints = $shipsPoints;
+    public function setShipsPoints(float $shipsPoints): self
+    {
+        $this->shipsPoints = $shipsPoints;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getShipsOldRank(): int
-	{
-		return $this->shipsOldRank;
-	}
+    public function getShipsOldRank(): int
+    {
+        return $this->shipsOldRank;
+    }
 
-	public function setShipsOldRank(int $shipsOldRank): self
-	{
-		$this->shipsOldRank = $shipsOldRank;
+    public function setShipsOldRank(int $shipsOldRank): self
+    {
+        $this->shipsOldRank = $shipsOldRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getShipsRank(): int
-	{
-		return $this->shipsRank;
-	}
+    public function getShipsRank(): int
+    {
+        return $this->shipsRank;
+    }
 
-	public function setShipsRank(int $shipsRank): self
-	{
-		$this->shipsRank = $shipsRank;
+    public function setShipsRank(int $shipsRank): self
+    {
+        $this->shipsRank = $shipsRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getTechnologyPoints(): float
-	{
-		return $this->technologyPoints;
-	}
+    public function getTechnologyPoints(): float
+    {
+        return $this->technologyPoints;
+    }
 
-	public function setTechnologyPoints(float $technologyPoints): self
-	{
-		$this->technologyPoints = $technologyPoints;
+    public function setTechnologyPoints(float $technologyPoints): self
+    {
+        $this->technologyPoints = $technologyPoints;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getTechnologyOldRank(): int
-	{
-		return $this->technologyOldRank;
-	}
+    public function getTechnologyOldRank(): int
+    {
+        return $this->technologyOldRank;
+    }
 
-	public function setTechnologyOldRank(int $technologyOldRank): self
-	{
-		$this->technologyOldRank = $technologyOldRank;
+    public function setTechnologyOldRank(int $technologyOldRank): self
+    {
+        $this->technologyOldRank = $technologyOldRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getTechnologyRank(): int
-	{
-		return $this->technologyRank;
-	}
+    public function getTechnologyRank(): int
+    {
+        return $this->technologyRank;
+    }
 
-	public function setTechnologyRank(int $technologyRank): self
-	{
-		$this->technologyRank = $technologyRank;
+    public function setTechnologyRank(int $technologyRank): self
+    {
+        $this->technologyRank = $technologyRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getTotalOldRank(): int
-	{
-		return $this->totalOldRank;
-	}
+    public function getTotalOldRank(): int
+    {
+        return $this->totalOldRank;
+    }
 
-	public function setTotalOldRank(int $totalOldRank): self
-	{
-		$this->totalOldRank = $totalOldRank;
+    public function setTotalOldRank(int $totalOldRank): self
+    {
+        $this->totalOldRank = $totalOldRank;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getUpdateTime(): \DateTimeImmutable
-	{
-		return $this->updateTime;
-	}
+    public function getUpdateTime(): \DateTimeImmutable
+    {
+        return $this->updateTime;
+    }
 
-	public function setUpdateTime(\DateTimeImmutable $updateTime): self
-	{
-		$this->updateTime = $updateTime;
+    public function setUpdateTime(\DateTimeImmutable $updateTime): self
+    {
+        $this->updateTime = $updateTime;
 
-		return $this;
-	}
+        return $this;
+    }
 
 
-	public function getBuildingsPoints(): float
-	{
-		return $this->buildingsPoints;
-	}
+    public function getBuildingsPoints(): float
+    {
+        return $this->buildingsPoints;
+    }
 
-	public function setBuildingsPoints(float $buildingsPoints): self
-	{
-		$this->buildingsPoints = $buildingsPoints;
+    public function setBuildingsPoints(float $buildingsPoints): self
+    {
+        $this->buildingsPoints = $buildingsPoints;
 
-		return $this;
-	}
+        return $this;
+    }
 }

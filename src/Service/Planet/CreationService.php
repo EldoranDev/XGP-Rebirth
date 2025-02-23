@@ -37,6 +37,7 @@ final readonly class CreationService
             false => $name ?? 'Colony',
         };
 
+		/** @var array<string, int> $resources */
 		$resources = [];
 
 		foreach ($this->resourceService->getResourceIds() as $resourceId) {
@@ -66,7 +67,7 @@ final readonly class CreationService
         if ($main) {
             return new PlanetSize(
                 self::MAIN_PLANET_DIAMETER,
-                $this->optionsService->getOption('initial_fields', 163),
+				(int)$this->optionsService->getOption('initial_fields', 163),
             );
         }
         $min = [
